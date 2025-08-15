@@ -57,3 +57,4 @@ function showAlert(message){
 function closeAlert(){
     document.getElementById("errorDisplay").style.display = "none";
 }
+
