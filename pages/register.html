@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Register</title>
+    <link rel="stylesheet" href="../src/style.css" />
+
+  </head>
+  <body>
+    <!-- Container for entire form. -->
+    <div class="form-container" style="justify-content: center;">
+      <!-- Registration Side -->
+      <div>
+        <h1>Register</h1>
+        <p>Please provide your information below.</p>
+
+        <!-- Registration Form -->
+        <form id="registration">
+          <input name="username" type="text" placeholder="Username" />
+          <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
+
+          <input name="email" type="text" placeholder="Email" />
+          <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
+          ><br />
+
+          <input name="password" type="text" placeholder="Password" />
+          <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
+
+          <input
+            name="passwordCheck"
+            type="text"
+            placeholder="Repeat Password"
+          />
+          <span class="input-icon"><i class="fa-solid fa-key"></i></span
+          ><br /><br />
+
+          <div class="flex-row">
+            <input name="terms" type="checkbox" />
+            <label for="terms"
+              >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
+            >
+            <input type="submit" value="Register" />
+          </div>
+        </form>
+        <br>
+         <p>Already a user? <a href="../index.html">Login</a> or <a href="../index.html">play as Guest</p>
+      </div>
+     
+      
+    </div>
+
+    <!-- Error Display Container -->
+    <div id="errorDisplay"></div>
+
+
+    <!-- Font Awesome for Icons -->
+    <script
+      src="https://kit.fontawesome.com/d8f052c6cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../src/script.js"></script>
+  </body>
+</html>

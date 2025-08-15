@@ -1,46 +1,30 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Form Validation Practice</title>
+    <title>Gaming</title>
     <link rel="stylesheet" href="./src/style.css" />
 
   </head>
   <body>
     <!-- Container for entire form. -->
     <div class="form-container">
-      <!-- Registration Side -->
+      <!-- Gust Side -->
       <div>
-        <h1>Register</h1>
-        <p>Please provide your information below.</p>
+        <h1>Guest</h1>
+        <p>You can start without creating an account.</p>
 
-        <!-- Registration Form -->
-        <form id="registration">
+        <!-- Guest Form -->
+        <form id="guest">
           <input name="username" type="text" placeholder="Username" />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
-
-          <input name="email" type="text" placeholder="Email" />
-          <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
-          ><br />
-
-          <input name="password" type="text" placeholder="Password" />
-          <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
-
-          <input
-            name="passwordCheck"
-            type="text"
-            placeholder="Repeat Password"
-          />
-          <span class="input-icon"><i class="fa-solid fa-key"></i></span
-          ><br /><br />
-
+          <br>
           <div class="flex-row">
-            <input name="terms" type="checkbox" />
-            <label for="terms"
-              >I agree to the&nbsp;<a href="#">Terms of Use</a>.</label
-            >
-            <input type="submit" value="Register" />
+            <input type="submit" value="Continue As Guest" />
           </div>
         </form>
+        <br>
+        <br>
+        <p>I want to <a href="./pages/register.html">Create an Account</a></p>
       </div>
 
       <!-- Login Side -->
@@ -65,8 +49,10 @@
           <br /><br />
         </form>
 
-        <p>Forgot your <a href="#">Username</a> or <a href="#">Password?</a></p>
+        <p>Forgot your <a href="./pages/forgotUsername.html">Username</a> or <a href="./pages/resetPassword.html">Password?</a></p>
       </div>
+
+      
     </div>
 
     <!-- Error Display Container -->

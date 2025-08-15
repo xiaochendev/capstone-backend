@@ -7,7 +7,7 @@ html {
   font-family: Calibri;
 }
 body {
-  background: linear-gradient(-45deg, #0079c0, #0097a7, #4285f4);
+  background: linear-gradient(-45deg, #010202, #111313, #040406);
   color: #888;
 }
 .form-container {
@@ -73,11 +73,23 @@ body {
   padding: 10px;
   border: 1px solid #888;
   border-radius: 5px;
-  background: #55ecfc;
+  background: #2bd8fa;
   cursor: pointer;
 }
 .form-container input[type="submit"]:hover {
-  background: #ffab40;
+  background: #2bd8fa;
+}
+.form-container input[type="button"] {
+  margin-left: 8em;
+  font-weight: bold;
+  padding: 10px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  background: #ccd6d6;
+  cursor: pointer;
+}
+.form-container input[type="button"]:hover {
+  background: #2bd8fa;
 }
 .form-container .input-icon {
   position: absolute;

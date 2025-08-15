@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Forgot Username</title>
+    <link rel="stylesheet" href="../src/style.css" />
+
+  </head>
+  <body>
+    <!-- Container for entire form. -->
+    <div class="form-container" style="justify-content: center;">
+      <!-- forgotUsername Side -->
+      <div>
+        <h1>Forgot Username</h1>
+        <p>Please enter the email address you used to create your account. An email will sent to you containing your usernmae. Once received, return to the Login page to continue.</p>
+
+        <!-- resetPassword Form -->
+        <form id="resetPassword">
+          <input name="email" type="text" placeholder="Email address" />
+          <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
+          ><br /> <br>
+        
+          <div class="flex-row">
+            <input type="button" onclick="window.location.href='../index.html'" value="Cancel">
+            <input type="submit" value="Sent email" />
+          </div>
+        </form> <br>
+       
+         <p>if you do not receive the email. please check your spam and junk folder before re-trying.</p>
+      </div>
+     
+      
+    </div>
+
+    <!-- Error Display Container -->
+    <div id="errorDisplay"></div>
+
+
+    <!-- Font Awesome for Icons -->
+    <script
+      src="https://kit.fontawesome.com/d8f052c6cf.js"
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="../src/script.js"></script>
+  </body>
+</html>
