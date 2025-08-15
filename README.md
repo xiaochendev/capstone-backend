@@ -1,5 +1,5 @@
 # Flip Card Game
-- validvalidated and authenticated user's input
+- validated user's input
 - 
 
 
