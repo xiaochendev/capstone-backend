@@ -1,4 +1,6 @@
-# SBA
+# Flip Card Game
+- validvalidated and authenticated user's input
+- 
 
 
 # Steps:
