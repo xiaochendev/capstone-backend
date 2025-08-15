@@ -13,3 +13,47 @@
 // Include at least one form and/or input with HTML attribute validation.
 // Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but should include event-based validation in addition to the HTML attribute validation.)
 
+const guest = document.getElementById("guest");
+const gUsername = guest.querySelector('[name="username"]');
+
+guest.addEventListener("submit", guestValidate);
+    
+function guestValidate(e) {
+    e.preventDefault();
+
+    const guestNameVal = validateGuestName();
+    if (guestNameVal === false) {
+        e.returnValue = false;
+        return false;
+    }
+
+    const welcomeMessage = document.getElementById("welcomeMessage");
+    const loading = document.getElementById("loading");
+
+    welcomeMessage.textContent = `Welcome: ${guestNameVal}`;
+    welcomeMessage.style.display = "block";
+    loading.style.display = "block";
+
+    setTimeout(() => {
+        window.location.href = "./pages/flipCardGame.html";
+    }, 1000);
+    return true;
+};
+
+function validateGuestName(){
+    if (gUsername.value === ""){
+        showAlert("Please provide a username.")
+        gUsername.focus();
+        return false;
+    }
+    return gUsername.value;
+}
+
+function showAlert(message){
+    document.getElementById("alertMessage").textContent = message;
+    document.getElementById("errorDisplay").style.display = "block";
+}
+
+function closeAlert(){
+    document.getElementById("errorDisplay").style.display = "none";
+}
