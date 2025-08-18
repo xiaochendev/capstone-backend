@@ -24,8 +24,11 @@ let flipped = [];
 let lockBoard = false;
 
 function createCard(cards){
+    // created individual card containers
     const card = document.createElement("div");
     card.classList.add("card");
+
+    // stored each card on card-back.textContent
     card.innerHTML = `
     <div class="card-inner">
         <div class="card-front">|||||</div>
@@ -33,6 +36,7 @@ function createCard(cards){
     </div>
     `;
 
+    // used flipped to track cards that been clicked, stored matched cards on flipped, otherwise removed from flipped.
     card.addEventListener('click', () => {
         if (lockBoard || card.classList.contains('flipped')) return;
 
@@ -41,6 +45,7 @@ function createCard(cards){
 
         // when flipped two cards
         if (flipped.length === 2){
+            // lockBoard to prevent the user click more cards while checking the match.
             lockBoard = true;
             const [first, second] = flipped;
 
@@ -48,6 +53,7 @@ function createCard(cards){
             const card2 = second.querySelector('.card-back').textContent;
             // shown if matched
             if (card1 == card2) {
+                // empty flipped, n allow user to click more cards
                 flipped = [];
                 lockBoard = false;
             } else {
@@ -61,6 +67,7 @@ function createCard(cards){
             }
         }
     });
+    // added each cards into game-board container
     gameBoard.appendChild(card);
 }
 
