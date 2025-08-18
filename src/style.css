@@ -116,7 +116,7 @@ a {
 a:hover {
   color: #ffab40;
 }
-.modal {
+/* .modal {
   position: absolute;
   background: #fcc;
   color: red;
@@ -134,25 +134,40 @@ a:hover {
   display: none;
   position: fixed;
   z-index: 999;
-  left: 100;
+  left: 50%;
   top: 0;
   width: 100%;
   height: 100%;
+  background-color: rgba(0,0,0,0.5); 
+} */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70%;
   background-color: rgba(0,0,0,0.5);
+  color: red;
+  margin-top: 10%;
 }
+
 .modal-content {
-  background-color: white;
+  background-color: #fff5f5;
   padding: 30px;
   margin: 15% auto;
   border-radius: 8px;
   width: 300px;
   text-align: center;
-
+  border: 1px solid red;
+  color: red;
 }
 
 #welcomeMessage {
   animation: fadeIn 1s ease-in;
-  color:#2a8787;
+  color:#43cd5f;
 }
 
 @keyframes fadeIn {
