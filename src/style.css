@@ -146,9 +146,9 @@ a:hover {
   position: fixed;
   z-index: 999;
   left: 0;
-  top: 8em;
+  top: 3em;
   width: 100%;
-  height: 70%;
+  height: 80%;
   background-color: rgba(0,0,0,0.5);
   color: red;
 
@@ -212,6 +212,7 @@ a:hover {
   transition: transform 0.5s;
 }
 
+/* animated flipped card*/
 .card.flipped .card-inner {
   transform: rotateY(180deg);
 }

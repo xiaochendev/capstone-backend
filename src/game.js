@@ -13,7 +13,7 @@
 // Include at least one form and/or input with HTML attribute validation.
 // Include at least one form and/or input with DOM event-based validation. (This can be the same form or input as the one above, but should include event-based validation in addition to the HTML attribute validation.)
 
-// 24 cards; 6 x 4 grids
+// 24 cards; 6 cols x 4 rows in a grid
 const cards = ["😘","😘","😘", "👽", "👿", "🖖🏿", "👀", "👁️", "✊", "👻","😘", "👽", "👿", "🖖🏿", "👀", "👁️", "✊", "👻", "🎲", "🎲", "🎲", "🎲", "🎲","🎲"];
 
 // shuffle cards => use for restart game too
