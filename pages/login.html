@@ -19,7 +19,7 @@
           <input name="username" type="text" placeholder="Username" />
           <span class="input-icon"><i class="fa-solid fa-user"></i></span><br />
 
-          <input name="password" type="text" placeholder="Password" />
+          <input name="password" type="password" placeholder="Password" />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
           ><br /><br />
 
@@ -37,14 +37,7 @@
       
     </div>
 
-    <!---Loading Container-->>
-    <div id="loading" class="modal">
-      <div class="modal-content">
-        <p id="welcomeMessage" style="display:none; font-weight: bold;"></p>
-      </div>
-    </div>
-
-    <!---Loading Container-->>
+    <!---Loading Container-->
     <div id="loading" class="modal">
       <div class="modal-content">
         <p id="welcomeMessage" style="display:none; font-weight: bold;"></p>
@@ -55,7 +48,7 @@
     <div id="errorDisplay" class="modal">
       <div class="modal-content">
         <p id="alertMessage"></p>
-        <button onclick="closeAlert()">OK</button>
+        <button id="closeErrorBtn">OK</button>
       </div>
     </div>
 

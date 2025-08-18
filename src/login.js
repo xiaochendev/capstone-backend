@@ -38,13 +38,13 @@ function loginUsernameVal(){
     
     // The username cannot be blank.
     if (!value) {
-        showAlert("// The username cannot be blank.", lUsername);
+        showAlert("// The username cannot be blank.");
         return false;
     }
 
     // The username must exist (within localStorage). Remember that usernames are stored in all lowercase, but the username field accepts (and should not invalidate) mixed-case input.
     if (!users[value.toLowerCase()]){
-        showAlert("The username does not exist.", lUsername);
+        showAlert("The username does not exist.");
         return false;
     }
 
@@ -58,12 +58,12 @@ function loginPasswordVal(){
 
     // The password cannot be blank.
     if (!pass) {
-        showAlert("The password cannot be blank.", lPassword);
+        showAlert("The password cannot be blank.");
         return false;
     }
     // The password must be correct (validate against localStorage).
     if (users[username].password !== pass) {
-        showAlert("Password is incorrect.", lPassword);
+        showAlert("Password is incorrect.");
         return false;
     }
     return true;
