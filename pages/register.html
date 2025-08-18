@@ -22,12 +22,12 @@
           <span class="input-icon"><i class="fa-solid fa-envelope"></i></span
           ><br />
 
-          <input name="password" type="text" placeholder="Password" />
+          <input name="password" type="password" placeholder="Password" />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span><br />
 
           <input
             name="passwordCheck"
-            type="text"
+            type="password"
             placeholder="Repeat Password"
           />
           <span class="input-icon"><i class="fa-solid fa-key"></i></span
@@ -42,7 +42,7 @@
           </div>
         </form>
         <br>
-         <p>Already a user? <a href="../pages/login.html">Login</a> or <a href="../index.html">play as Guest</p>
+         <p>Already a user? <a href="../pages/login.html">Login</a> or <a href="../index.html">play as Guest</a></p>
       </div>
      
       
@@ -60,15 +60,16 @@
     <div id="errorDisplay" class="modal">
       <div class="modal-content">
         <p id="alertMessage"></p>
-        <button onclick="closeAlert()">OK</button>
+        <button id="closeErrorBtn">OK</button>
       </div>
     </div>
+
 
     <!-- Font Awesome for Icons -->
     <script
       src="https://kit.fontawesome.com/d8f052c6cf.js"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="../src/script.js"></script>
+    <script type="module" src="../src/register.js"></script>
   </body>
 </html>
