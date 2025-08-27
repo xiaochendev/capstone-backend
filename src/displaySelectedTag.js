@@ -1,16 +1,19 @@
 export function displaySelectedTags(tags) {
-    const gallery = document.getElementById('gallery');
-
     const existing = document.getElementById('tagInfo');
-    // remove previous, clear tag notice when no filter
-    if (existing) existing.remove(); 
+    // remove previous tagInfo, clear tag notice when no filter
+    if (existing) {
+        existing.remove(); 
+    }
 
     if (tags.length === 0) return;
 
     // create tag notice when select tags
     const tagInfo = document.createElement('p');
+    tagInfo.id = 'tagInfo';     // add id to DOM, so it won't break logic when clear
     tagInfo.textContent = `Filtering by tags: ${tags.join(', ')}`;
     tagInfo.style.fontStyle = 'italic';
 
-    gallery.insertBefore(tagInfo, gallery.firstChild);
+    // Insert tagInfo BEFORE the gallery
+    const gallery = document.getElementById('gallery');
+    gallery.parentNode.insertBefore(tagInfo, gallery);
 }

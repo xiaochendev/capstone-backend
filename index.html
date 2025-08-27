@@ -3,24 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./src/style.css">
     <title>Search for your waifu</title>
 </head>
 <body>
 
-    <h1>Search for Your waifu</h1>
+    <div class="center-wrapper">
 
-    <input type="text" id="searchInput" placeholder="Leave it blank or ex. waifu, maid, uniform, marin-kitagawa, mori-calliope, raiden-shogun, oppai, selfies, kamisato-ayaka...">
-    <button id="searchBtn">Start searching</button>
-    <button id="restartBtn">🔄 Restart search</button>
+        <h1>Search for Your Waifu</h1>
+
+        <!-- searchBar -->
+        <div class="searchBar">
+            <input type="text" id="searchInput" placeholder="leave it blank or a, maid, uniform, marin-kitagawa, mori-calliope, raiden-shogun, oppai, selfies, kamisato-ayaka...">
+            <button id="searchBtn">Search</button>
+            <button id="restartBtn">🔄 </button>
+        </div>
 
 
-    <div id="tagContainer"></div>
+        <!-- tagContainer -->
+        <div id="tagContainer"></div>
 
-    <!-- <button id="fetchBtn" style="width: 80px; height: 20px;"></button> -->
+        <!-- <button id="fetchBtn" style="width: 80px; height: 20px;"></button> -->
+         <!-- gallery -->
+        <div id="gallery"></div>
 
-    <div id="gallery"></div>
+    </div>
+   
 
-    <script src="./src/index.js"></script>
+    <!-- Font Awesome for Icons -->
+    <script
+      src="https://kit.fontawesome.com/d8f052c6cf.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Bootstrap JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    ></script>
+
+    <script type="module" src="./src/index.js"></script>
 </body>
 </html>

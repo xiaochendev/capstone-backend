@@ -66,7 +66,7 @@ async function handleSearchBtn() {
             const matchingTags = allTags.filter(tag => tag.toLowerCase().includes(input));
 
             if (matchingTags.length === 0) {
-                gallery.innerHTML = '<p>💔💔💔No Waifu been found according to your tags</p>';
+                gallery.innerHTML = '<p>💔💔💔 No Waifu been found according to your tags</p>';
                 return;
             }
             tagsToSearch = matchingTags;

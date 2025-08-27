@@ -1,5 +1,7 @@
-# Data Fetched
-- ...
+# Search for your waifu
+- Allowed the users to search ideal animated "waifu" according to tags or Kept random searching without any tags
+- Fetched the data from external API(api.waifu.im) and displayed it on browser using JS build-in fetch
+- Tailored styles using bootstrap and fontAwesome, make it better presentation
 
 # Steps:
 

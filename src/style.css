@@ -1,6 +1,96 @@
+/* basic styles */
 html, body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     height: 100%;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: lightslategray;
+
+}
+
+/* flexbox center wrapper */
+.center-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+    gap: 10px;
+}
+
+h1 {
+    color: white;
+}
+
+.searchBar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* allow wrapping on small screens */
+    flex-wrap: nowrap;         /* force 1 line*/
+    gap: 10px;
+    margin-bottom: 20px;
+    max-width: 800px;
+}
+
+#searchInput {
+    /* prevent growing(0), allowed shrink(1), max-width 500px
+    flex: 0 1 500px;  */
+    width: 500px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    min-width: 200px;
+    width: 100%;        /*prevent it from overflow*/
+}
+
+#searchBtn, #restartBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #343a40;
+    color: white;
+    transition: background-color 0.2s;
+}
+
+#searchBtn:hover,
+#restartBtn:hover {
+    background-color: #495057;
+}
+
+#tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    max-width: 800px;
+}
+
+#tagContainer label {
+    background-color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#tagInfo {
+    font-style: italic;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1000px;
 }
