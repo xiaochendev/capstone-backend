@@ -6,8 +6,11 @@
 
 // |--------------------------------------------III: Makes it Nice/reasonable when displayed--------------------------------------------------|
 
+import { resetPage } from "./resetPage.js";
+import { displaySelectedTags } from "./displaySelectedTag.js";
+import { displayImages } from "./displayImage.js";
 
-async function getTags(){
+export async function getTags(){
     try {
         // Fetch tag list from API on load
         const res = await fetch('https://api.waifu.im/tags');
@@ -25,7 +28,7 @@ async function getTags(){
     }
 }
 
-function renderTagCheckBoxes(tags) {
+export function renderTagCheckBoxes(tags) {
     const container = document.getElementById("tagContainer");
     container.innerHTML = ''; // Clear existing 
 
@@ -42,22 +45,6 @@ function renderTagCheckBoxes(tags) {
 
         container.appendChild(label);
     }); 
-}
-
-function displaySelectedTags(tags) {
-    const gallery = document.getElementById('gallery');
-
-    const existing = document.getElementById('tagInfo');
-    if (existing) existing.remove(); // remove previous, clear tag notice when no filter
-
-    if (tags.length === 0) return;
-
-    // create tag notice when select tags
-    const tagInfo = document.createElement('p');
-    tagInfo.textContent = `Filtering by tags: ${tags.join(', ')}`;
-    tagInfo.style.fontStyle = 'italic';
-
-    gallery.insertBefore(tagInfo, gallery.firstChild);
 }
 
 async function handleSearchBtn() {
@@ -177,44 +164,6 @@ async function tryFetchWithFallback(tagsToSearch) {
     return [];
 }
 
-
-function displayImages(images){
-    if (!images || !Array.isArray(images)) {
-        console.error('displayImages expects an array of images, got:', images);
-        return;
-    }
-
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = '';
-
-    images.forEach(image => {
-        const card = document.createElement('div');
-        card.className = 'waifu-card';
-
-        const img = document.createElement('img');
-        img.src = image.url;
-        img.alt = image.tags.map(t => t.name).join(', ');
-        img.style.maxWidth = '300px';
-        img.style.borderRadius = '10px';
-        img.style.display = 'block';
-        img.style.marginBottom = '10px';
-
-        const info = document.createElement('div');
-        info.className = 'info';  
-
-        const artist = image.artist?.name ?? 'Unknown';
-        info.innerHTML = `
-            <strong>Artist:</strong> ${artist}<br>
-            <strong>Size:</strong> ${image.width} X ${image.height}<br>
-            <strong>Tags:</strong> ${image.tags.map(t => t.name).join(', ')}
-        `;
-
-        card.appendChild(img);
-        card.appendChild(info);
-        gallery.appendChild(card);
-    });
-}
-
 // Instead of a global variable, use attachFilterCheckboxHandler func to track selected tags
 function attachFilterCheckboxHandler(images) {
     const checkboxes = document.querySelectorAll('input[name="tag"]');
@@ -233,25 +182,6 @@ function attachFilterCheckboxHandler(images) {
             displaySelectedTags(selected);
         });
     });
-}
-
-
-function resetPage() {
-    const gallery = document.getElementById('gallery');
-    gallery.innerHTML = ''; // Clear image gallery
-
-    // Re-fetch and render all available tags
-    getTags().then(allTags => {
-        renderTagCheckBoxes(allTags);
-    });
-
-    // Optionally clear any selected checkboxes
-    const checkboxes = document.querySelectorAll('input[name="tag"]');
-    checkboxes.forEach(cb => cb.checked = false);
-
-    // Remove "Filtering by tags" message if exists
-    const existing = document.getElementById('tagInfo');
-    if (existing) existing.remove();
 }
 
 
