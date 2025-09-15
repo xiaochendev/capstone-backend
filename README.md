@@ -1,39 +1,42 @@
-# Search for your waifu
-- Allowed the users to search ideal animated "waifu" according to tags or Kept random searching without any tags
-- Fetched the data from external API(api.waifu.im) and displayed it on browser using JS build-in fetch
-- Tailored styles using bootstrap and fontAwesome, make it better presentation
+# Mongoose
+- 
 
-# Steps:
-
-1. Open your terminal
-
-2. Copy repository to your local file
+# Steps
+1. Copy rerepository to your local file
 ```
 git clone https://github.com/xiaochendev/secRepo.git
 ```
 
-3. Install VS-code if you don't have
+2. Change to lab direcotry, ex. secRepo
 ```
-brew install --cask visual-studio-code
+cd secRepo
 ```
 
-4. Download Live Server(by Ritwick Dey) extension in VS-code
+3. Install all the required dependencies
+```
+npm install
+```
 
-***Its viewable in your browser by right-clicking open with live server in .html***
+4. Start the server
+```
+npm start
+```
+
+5. Its viewable in your browser by entering
+```
+localhost:3000
+```
+
+Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you to test following APIs.
+
+|  VERB |   PATH | QUERY PARAMS | DESCRIPTION |
+|----------|----------|--------|------------------------------|
+|  GET	| 
 
 
 # Technologies
-- Javascript
-- HTML
-- CSS
+- Node.js
+- Express.js
+- mongoose
 
 
-# Reflection
-- What could you have done differently during the planning stages of your project to make the execution easier?
-NA
-- Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
-NA
-- What would you add to, or change about your application if given more time?
-NA
-- Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again.
-NA
