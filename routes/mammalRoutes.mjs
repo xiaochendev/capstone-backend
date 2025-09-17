@@ -1,6 +1,24 @@
 import express from "express";
 import Mammal from "../models/mammalSchema.mjs";
 const router = express.Router();
+import { mammals } from '../data/data.mjs'; 
+
+
+// // seed route, fill db w data; hide seed route, you don't want client to reseed it.
+// router
+//   .route('/seed')
+//   .get(async (req, res)=>{
+//     try {
+//       await Mammal.deleteMany({});     //optional just to clear out database before reloading new data, ensure data not repeated.
+//       await Mammal.create(mammals);     //mongoose   
+//       // await Mammal.insertMany(mammals);     //mongoDB driver way
+
+//       res.send('data succesfully seeded');
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   })
+
 
 // Get animals by habitat
 router.get("/habitat/:hab", async (req, res) => {
