@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html  lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adopt Center</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <main class="home-page">
+        <%- include('partials/nav') %>
+        <%- include('partials/messages') %>
+      <section>
+        <h1> Animals in Adopt Center</h1>
+      </section>
+
+      <section>
+            <% if (animals.length === 0) { %>
+                <p>No animals available at the moment.</p>
+            <% } else { %>
+                <ul class="animals-list">
+                <% animals.forEach(animal => { %>
+                    <li>
+                    <a href="/api/<%= animal.route %>/<%= animal._id %>">
+                        <strong><%= animal.name %></strong>
+                    —
+                    <%= animal.species || animal.type %> —
+                    <span> | Age: <%= animal.age %> | 
+                    <%= animal.habitat.join(", ") %> —
+                    <%= animal.isAdopted ? "(Adopted)" : "(Available)" %>
+                    </li>
+                <% }); %>
+                </ul>
+            <% } %>
+      </section>
+
+  </main> 
+</body>
+
+</html>

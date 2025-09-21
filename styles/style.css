@@ -1,0 +1,96 @@
+html, body {
+    margin: 0;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+h1, h2 {
+  color: #333;
+}
+/* test for style.css working */
+/* main {
+  background-color: rgba(0, 255, 0, 0.1);
+} */
+
+.success {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 10px;
+  margin: 1em 0;
+  border-left: 5px solid #28a745;
+}
+
+.error {
+  background-color: #d4edda;
+  color: rgb(254, 7, 7);
+  font-weight: bold;
+  padding: 10px;
+  margin: 1em 0;
+  border-left: 5px solid #f90f0f;
+}
+
+.home-page,
+.mammals-page,
+.avians-page,
+.fishes-page,
+.reptiles-page,
+.mammal-page,
+.avian-page,
+.fish-page,
+.reptile-page,
+.available-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.main-nav a,
+.animals-list,
+.mammals-list,
+.avians-list,
+.fishes-list,
+.reptiles-list,
+.animals-list a,
+.mammals-list a,
+.avians-list a,
+.fishes-list a,
+.reptiles-list a,
+.mammal-detail a,
+.avian-detail a, 
+.fish-detail a,
+.reptile-detail a {
+  color: #0a0a09;
+  text-decoration: none;
+  list-style: none;
+  padding: 0;
+}
+
+.main-nav a:hover,
+.animals-list a:hover,
+.mammals-list a:hover,
+.avians-list a:hover,
+.fishes-list a:hover,
+.reptiles-list a:hover,
+.mammal-detail a:hover,
+.avian-detail a:hover,
+.fish-detail a:hover,
+.reptile-detail a:hover {
+  text-decoration: underline;
+  color: rgb(20, 53, 240);
+}
+
+.mammals-form,
+.avians-form,
+.fishes-form,
+.reptiles-form,
+.avian-form,
+.fish-form,
+.mammal-form,
+.reptile-form {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 2em;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}

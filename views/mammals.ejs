@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Mammals</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="mammals-page">
+        <%- include('partials/nav') %>
+        <%- include('partials/messages') %> 
+      <!--  Form to Create New Mammal -->
+      <section class="mammals-form">
+        <h2>Create New Mammal</h2>
+        <form action="/api/mammals" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"  value="<%= formData.name || '' %>" required>
+
+            <label for="species">Species:</label>
+            <input type="text" id="species" name="species">
+
+            <label for="age">Age (years):</label>
+            <input type="number" id="age" name="age" min="0" value="<%= formData.age || '' %>"><br/>
+
+            <label for="habitat">Habitat (comma separated):</label>
+            <input type="text" id="habitat" name="habitat" value="<%= formData.habitat || '' %>" placeholder="e.g. forest, desert">
+
+            <label for="arrivalDate">Arrival Date:</label>
+            <input type="date" id="arrivalDate" name="arrivalDate" value="<%= formData.arrivalDate || '' %>"><br/>
+
+            <label for="healthStatus">Health Status:</label>
+            <input type="text" id="healthStatus" name="healthStatus" placeholder="e.g. healthy">
+
+            <label for="vaccinated">Vaccinated:</label>
+            <input type="checkbox" id="vaccinated" name="vaccinated">
+
+            <label for="microchipId">Microchip ID:</label>
+            <input type="text" id="microchipId" name="microchipId"><br/>
+
+            <label for="isAdopted">Adopted:</label>
+            <input type="checkbox" id="isAdopted" name="isAdopted" <%= formData.isAdopted ? 'checked' : '' %> >
+
+            <label for="adoptionDate">Adoption Date:</label>
+            <input type="date" id="adoptionDate" name="adoptionDate">
+
+            <label for="adopterName">Adopter Name:</label>
+            <input type="text" id="adopterName" name="adopterName"><br/>
+
+            <label for="adopterContact">Adopter Contact:</label>
+            <input type="text" id="adopterContact" name="adopterContact">
+
+            <button type="submit">Create Mammal</button>
+        </form>
+      </section>
+
+      <!--  Mammals Listing -->
+      <section class="mammals-section">
+        <% if (mammals && mammals.length > 0) { %>
+            <ul class="mammals-list">
+                <% mammals.forEach(mammal => { %>
+                    <li>
+                        <a href="/api/mammals/<%= mammal._id %>">
+                            <strong><%= mammal.name %></strong> — <%= mammal.species %>
+                        </a>
+                        <span> | Age: <%= mammal.age %> | 
+                        <% if (mammal.isAdopted) { %>
+                            <em>(Adopted)</em>
+                        <% } else { %>
+                            <em>(Available)</em>
+                        <% } %>
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No mammals found.</p>
+        <% } %>
+      </section>
+
+    </main>
+</body>
+</html>

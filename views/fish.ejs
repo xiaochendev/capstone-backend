@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= fish.name %> - Fish</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <main class="fish-page">
+        <%- include('partials/nav') %>
+        <%- include('partials/messages') %>
+        
+        <!-- Edit Fish Form -->
+        <section class="fish-form">
+            <h2>Edit Fish</h2>
+            <form action="/api/fishes/<%= fish.id %>?_method=PUT" method="POST">
+                <label>Name:
+                    <input type="text" name="name" value="<%= fish.name %>" required />
+                </label>
+
+                <label>Species:
+                    <input type="text" name="species" value="<%= fish.species %>" required />
+                </label>
+
+                <label>Age:
+                    <input type="number" name="age" value="<%= fish.age %>" min="0" />
+                </label><br/>
+
+                <label>Water Type:
+                    <select name="waterType" required>
+                        <option value="">-- Select --</option>
+                        <option value="freshwater" <%= fish.waterType === "freshwater" ? "selected" : "" %>>Freshwater</option>
+                        <option value="saltwater" <%= fish.waterType === "saltwater" ? "selected" : "" %>>Saltwater</option>
+                        <option value="brackish" <%= fish.waterType === "brackish" ? "selected" : "" %>>Brackish</option>
+                    </select>
+                </label>
+
+                <label>Habitat (comma-separated):
+                    <input type="text" name="habitat" 
+                        value="<%= fish.habitat ? fish.habitat.join(', ') : '' %>" 
+                        placeholder="e.g. reef, river" required />
+                </label><br/>
+
+                <label>Max Depth (meters):
+                    <input type="number" name="maxDepth" value="<%= fish.maxDepth || '' %>" min="0" />
+                </label>
+
+                <label>
+                    <input type="checkbox" name="isAdopted" <%= fish.isAdopted ? "checked" : "" %> />
+                    Adopted
+                </label>
+
+                <label>Adoption Date:
+                    <input type="date" name="adoptionDate" value="<%= fish.adoptionDate ? fish.adoptionDate.toISOString().split('T')[0] : '' %>" />
+                </label><br/>
+
+                <label>Adopter Name:
+                    <input type="text" name="adopterName" value="<%= fish.adopterName || '' %>" />
+                </label>
+
+                <label>Adopter Contact:
+                    <input type="text" name="adopterContact" value="<%= fish.adopterContact || '' %>" />
+                </label>
+
+                <label>Arrival Date:
+                    <input type="date" name="arrivalDate" value="<%= fish.arrivalDate ? fish.arrivalDate.toISOString().split('T')[0] : '' %>" />
+                </label>
+
+                <label>Health Status:
+                    <input type="text" name="healthStatus" value="<%= fish.healthStatus || '' %>" />
+                </label>
+
+                <label>
+                    <input type="checkbox" name="vaccinated" <%= fish.vaccinated ? "checked" : "" %> />
+                    Vaccinated
+                </label>
+
+                <label>Microchip ID:
+                    <input type="text" name="microchipId" value="<%= fish.microchipId || '' %>" />
+                </label>
+
+                <button type="submit">Update Fish</button>
+            </form>
+
+            <!-- Delete Form -->
+            <form action="/api/fishes/<%= fish.id %>?_method=DELETE" method="POST" onsubmit="return confirm('Are you sure?')">
+                <button type="submit">Delete Fish</button>
+            </form>
+        </section>
+
+        <!-- Fish Detail View -->
+        <section class="fish-detail">
+            <h1><%= fish.name %></h1>
+            <dl>
+                <dt>Species:</dt>
+                <dd><%= fish.species %></dd>
+
+                <dt>Age:</dt>
+                <dd><%= fish.age %> years</dd>
+
+                <dt>Water Type:</dt>
+                <dd><%= fish.waterType %></dd>
+
+                <dt>Habitat(s):</dt>
+                <dd>
+                    <% if (fish.habitat && fish.habitat.length > 0) { %>
+                        <%= fish.habitat.join(', ') %>
+                    <% } else { %>
+                        Not specified
+                    <% } %>
+                </dd>
+
+                <dt>Max Depth:</dt>
+                <dd><%= fish.maxDepth ? fish.maxDepth + ' meters' : 'Unknown' %></dd>
+
+                <dt>Arrival Date:</dt>
+                <dd><%= fish.arrivalDate ? new Date(fish.arrivalDate).toLocaleDateString() : 'Unknown' %></dd>
+
+                <dt>Health Status:</dt>
+                <dd><%= fish.healthStatus || 'Unknown' %></dd>
+
+                <dt>Vaccinated:</dt>
+                <dd><%= fish.vaccinated ? 'Yes' : 'No' %></dd>
+
+                <dt>Microchip ID:</dt>
+                <dd><%= fish.microchipId || 'Not available' %></dd>
+
+                <dt>Adoption Status:</dt>
+                <dd>
+                    <% if (fish.isAdopted) { %>
+                        ✅ Adopted
+                        <% if (fish.adoptionDate) { %> on <%= new Date(fish.adoptionDate).toLocaleDateString() %><% } %>
+                        <br />
+                        <strong>Adopter:</strong> <%= fish.adopterName || 'Unknown' %> (<%= fish.adopterContact || 'No contact info' %>)
+                    <% } else { %>
+                        🐾 Available for adoption
+                    <% } %>
+                </dd>
+            </dl>
+        </section>
+    </main>
+</body>
+</html>

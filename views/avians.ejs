@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Avians</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <main class="avians-page">
+        <%- include('partials/nav') %>
+        <%- include('partials/messages') %>
+        
+        <!-- Create New Avian Form -->
+        <section class="avians-form">
+            <h2>Create New Avian</h2>
+            <form action="/api/avians" method="POST">
+                <label>Name:
+                <input type="text" name="name" value="<%= formData.name || '' %>" required>
+                </label>
+
+                <label>Species:
+                <input type="text" name="species">
+                </label>
+
+                <label>
+                <input type="checkbox" name="domesticated">
+                Domesticated?
+                </label><br/>
+
+                <label>Breed (only if domesticated):
+                <input type="text" name="breed">
+                </label>
+
+                <label>Age:
+                <input type="number" name="age" min="0" value="<%= formData.age || '' %>">
+                </label><br/>
+
+                <label>Habitat (comma-separated):
+                <input type="text" name="habitat" value="<%= formData.habitat || '' %>" placeholder="e.g. forest, urban">
+                </label>
+
+                <label>Max Elevation (meters):
+                <input type="number" name="maxElevation" min="0">
+                </label><br/>
+
+                <label>
+                <input type="checkbox" name="isAdopted" <%= formData.isAdopted ? 'checked' : '' %> >
+                Adopted?
+                </label>
+
+                <label>Adoption Date:
+                <input type="date" name="adoptionDate">
+                </label>
+
+                <label>Adopter Name:
+                <input type="text" name="adopterName">
+                </label><br/>
+
+                <label>Adopter Contact:
+                <input type="text" name="adopterContact">
+                </label>
+
+                <label>Arrival Date:
+                <input type="date" name="arrivalDate" value="<%= formData.arrivalDate || '' %>">
+                </label>
+
+                <label>Health Status:
+                <input type="text" name="healthStatus">
+                </label>
+
+                <label>
+                <input type="checkbox" name="vaccinated">
+                Vaccinated?
+                </label>
+
+                <label>Microchip ID:
+                <input type="text" name="microchipId">
+                </label>
+
+                <button type="submit">Create Avian</button>
+            </form>
+        </section>
+
+        <!-- Avian List Section -->
+        <section class="avians-section">
+        <% if (avians && avians.length > 0) { %>
+            <ul class="avians-list">
+            <% avians.forEach(avian => { %>
+                <li>
+                <a href="/api/avians/<%= avian._id %>">
+                    <strong><%= avian.name %></strong> — <%= avian.species %>
+                </a>
+                <span> | Age: <%= avian.age %> | 
+                <% if (avian.isAdopted) { %>
+                    <em>(Adopted)</em>
+                <% } else { %>
+                    <em>(Available)</em>
+                <% } %>
+                </li>
+            <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No avians found.</p>
+        <% } %>
+        </section>
+    </main>
+</body>
+</html>

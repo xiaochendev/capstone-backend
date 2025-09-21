@@ -14,6 +14,7 @@ async function connectDB() {
     await mongoose.connect(connectionStr, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        autoIndex: false,           // disabling autoIndex in production to avoid performance
     });
 
     console.log("✅ MongoDB connected");
