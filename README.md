@@ -80,10 +80,17 @@ Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you
 
 # Reflection
 - What could you have done differently during the planning stages of your project to make the execution easier?
+  
   During schema brainstorming, Better to remove certain required fields that were not essential — for example, 'habitat'. In real-world scenarios, having just a name field provides more flexibility and simplifies data input. The schema was adjusted to better reflect practical use cases.
+
 - Were there any requirements that were difficult to implement? What do you think would make them easier to implement in future projects?
+  
   The project scope should be narrowed, ensure the schema design aligns more closely with actual requirements and avoids unnecessary complexity.
+
 - What would you add to or change about your application if given more time?
+  
   While additional features can always be added, expanding the project scope significantly impacts the overall design. As core functionalities evolve, the architecture must adapt accordingly.
+
 - Use this space to make notes for your future self about anything that you think is important to remember about this process, or that may aid you when attempting something similar again:
-    NA
+  
+  NA
