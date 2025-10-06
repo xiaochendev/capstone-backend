@@ -1,11 +1,10 @@
-# A
-<!-- Create REACT application that serves a purpose/solves a problem
-Fetch Data from a 3rd API
-Display data on the DOM
-Technologies needed:
-    useState OR useReducer - manage state
-    useEffect - to automatically fetch data/handle effects
-    react-router-dom - simulate 3 pages -->
+# Search a movie in OMDB
+- allow user to search a movie in OMDB by different methods, ex. movie title, or star war characters
+- displayed popular movies in OMDB
+
+- Used third party APIs key: 
+    1. Get FREE OMDB_API_KEY: `https://www.omdbapi.com/apikey.aspx`
+
 
 # Steps
 1. Copy rerepository to your local file
@@ -18,17 +17,27 @@ git clone https://github.com/xiaochendev/secRepo.git
 cd secRepo
 ```
 
-3. Install all the required dependencies
+3. Create .env in the dir 
+```
+touch .env
+```
+
+4. Add variables in .env
+```
+VITE_OMDB_API_KEY=<YOUR_OMDB_API_KEY>
+```
+
+5. Install all the required dependencies
 ```
 npm install
 ```
 
-4. Start the server
+6. Start the server
 ```
 npm run dev
 ```
 
-5. Then, Its viewable in your browser by entering
+7. Then, Its viewable in your browser by entering
 ```
 localhost:5173
 ```
