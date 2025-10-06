@@ -3,7 +3,7 @@
 - displayed popular movies in OMDB
 
 - Used third party APIs key: 
-    1. Get FREE OMDB_API_KEY: `https://www.omdbapi.com/apikey.aspx`
+    1. Get FREE OMDB_API_KEY: [link text](https://www.omdbapi.com/apikey.aspx)
 
 
 # Steps
