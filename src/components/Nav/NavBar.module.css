@@ -1,0 +1,38 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #333;
+  color: white;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Flex container for nav items */
+.navItems {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 50px;
+  padding: 0;
+  width: 100%;
+}
+
+/* Push this item to the far left */
+.left {
+  margin-right: auto;
+}
+
+.navItems li a {
+  color: white;
+  text-decoration: none;
+  padding: 0 10px;
+}
+
+.navItems li a:hover {
+  text-decoration: underline;
+}
