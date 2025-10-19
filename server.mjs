@@ -1,34 +1,66 @@
-import express from "express";
-import connectDB from "./config/db.mjs";
-import dotenv from "dotenv";
-import userRoutes from "./routes/api/users.mjs";
-import authRoutes from "./routes/api/auth.mjs";
-import { log, globalErr } from "./middleware/middleware.mjs";
-import cors from "cors";
+// import
+import express from 'express';
+import dotenv from 'dotenv';
+// import flash from 'connect-flash';
+// import methodOverride from 'method-override';
+import connectDB from './db/conn.mjs';
+import log from './utils/logging.mjs';
+import globalErrorHandling from './utils/globalErr.mjs'
 
-dotenv.config();
 
-//Initialize our app variable with Express
+// setup
+dotenv.config()
 const app = express();
-// Enviromental Variables
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-//Connect Database
-connectDB();
+(async () => {
+  try {
+    // DB connection
+    await connectDB(); 
 
-// Initialize middleware
-app.use(cors());
-app.use(express.json());
-app.use(log);
+    // // ejs settings
+    // app.set("view engine", "ejs");
+    // app.set("views", "./views");
 
-//Single endpoint just to test API. Send data to browser
-app.get("/", (req, res) => res.send("API Running"));
+    // middlewares
+    app.use(express.urlencoded({ extended: true }));
+    app.use(express.json());
+    app.use(log);
 
-//Define Routes
-app.use("/api/users", userRoutes);
-app.use("/api/auth", authRoutes);
+    // app.use(methodOverride('_method'));         // Enable PATCH/DELETE via HTML Forms, use ?method=PATCH or ?method=DELETE.
+    
+    // // Setup sessions
+    // app.use(session({
+    //   secret: "secret-key",   // can use env variables
+    //   resave: false,
+    //   saveUninitialized: false    // won't save unless you add data to it
+    // }));
 
-// Global Error
-app.use(globalErr);
+    // // connect-flash setting
+    // app.use(flash());
+    // app.use((req, res, next) => {
+    //   res.locals.success = req.flash('success');
+    //   res.locals.error = req.flash('error');
+    //   next();
+    // });
 
-app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+    // static style
+    app.use(express.static('./styles'));
+
+    // routes
+    app.use('/', (req, res) => {
+        res.json('working');
+    });
+
+    // error handling
+    app.use(globalErrorHandling);
+
+    // listener
+    app.listen(PORT, () => {
+      console.log(`🚀 Server running on http://localhost:${PORT}`);
+    });
+  } catch (err) {
+    console.error("❌ Server startup failed:", err.message);
+    process.exit(1); // Exit app with failure
+  }
+})();
