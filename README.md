@@ -35,6 +35,26 @@ npm install
 npm run dev
 ```
 
+7. Add Seed-data into your mongodb First by visiting broswer
+```
+localhost:3000/seed
+```
+
+- notes: Your supposed to see 'All animal data seeded successfully' if Your set MONGO_URI corretly in .env
+
+8. Then, Its viewable in your browser by entering
+```
+localhost:3000
+```
+
+Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you to test following APIs.
+
+# API References
+|  VERB |   PATH | QUERY PARAMS | DESCRIPTION |
+|----------|----------|--------|------------------------------|
+| Pages |   |   |   |
+|  GET  | / |  - |  Render home page|
+
 
 # Technologies
 - React.js
