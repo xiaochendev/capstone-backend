@@ -8,7 +8,7 @@
 git clone https://github.com/xiaochendev/capstone-backend.git
 ```
 
-2. Change to lab direcotry, ex. secRepo
+2. Change to the directory, ex. capstone-backend
 ```
 cd capstone-backend
 ```
