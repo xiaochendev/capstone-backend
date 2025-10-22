@@ -1,12 +1,14 @@
 // import
 import express from 'express';
 import dotenv from 'dotenv';
-// import flash from 'connect-flash';
-// import methodOverride from 'method-override';
 import connectDB from './db/conn.mjs';
 import log from './utils/logging.mjs';
 import globalErrorHandling from './utils/globalErr.mjs'
-
+import cors from 'cors';
+import authRoutes from './routes/authRoutes.mjs';
+import gameRoutes from './routes/gameRoutes.mjs';
+import dashboardRoutes from './routes/dashboardRoutes.mjs'
+import cookieParser from 'cookie-parser';
 
 // setup
 dotenv.config()
@@ -17,40 +19,30 @@ const PORT = process.env.PORT || 3001;
   try {
     // DB connection
     await connectDB(); 
-
-    // // ejs settings
-    // app.set("view engine", "ejs");
-    // app.set("views", "./views");
-
+    
     // middlewares
     app.use(express.urlencoded({ extended: true }));
     app.use(express.json());
     app.use(log);
+    app.use(cors({      
+      origin: 'http://localhost:5173',        // frontend url
+      credentials: true                        // allow cookie
+    }));
+    app.use(cookieParser());
 
     // app.use(methodOverride('_method'));         // Enable PATCH/DELETE via HTML Forms, use ?method=PATCH or ?method=DELETE.
     
-    // // Setup sessions
-    // app.use(session({
-    //   secret: "secret-key",   // can use env variables
-    //   resave: false,
-    //   saveUninitialized: false    // won't save unless you add data to it
-    // }));
-
-    // // connect-flash setting
-    // app.use(flash());
-    // app.use((req, res, next) => {
-    //   res.locals.success = req.flash('success');
-    //   res.locals.error = req.flash('error');
-    //   next();
-    // });
-
     // static style
     app.use(express.static('./styles'));
 
     // routes
-    app.use('/', (req, res) => {
-        res.json('working');
-    });
+    // app.use('/', (req, res) => {
+    //     res.json('working');
+    // });
+
+    app.use('/auth', authRoutes);
+    app.use('/games', gameRoutes);
+    app.use('/dashboard', dashboardRoutes);
 
     // error handling
     app.use(globalErrorHandling);
