@@ -95,7 +95,7 @@ export  const submitGameResult = async (req, res) => {
 export const getGlobalLeaderboard = async (req, res) => {
   try {
     // Find top 10 game sessions with fastest time (global, all games)
-    const leaderboard = await GameSession.find({})
+    const leaderboard = await GameSession.find({isCompleted:true})
       .populate('userId', 'username isGuest')
       .populate('gameId', 'name') // to show game name
       .sort({ timeToComplete: 1 }) // fastest time first
