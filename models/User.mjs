@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const bcrypt = require('bcrypt');         // use createRequire to load it if there is issues to import commonJS module
 
 const userSchema = new mongoose.Schema({
   username: {

@@ -6,7 +6,9 @@ const router = express.Router();
 
 // console.log("🔥 Loaded from: ", import.meta.url);
 
-// Only accessible by logged-in users
+// @route GET /dashboard
+// @desc get user's game stats
+// @access registered users
 router.get('/', authMiddleware, getUserDashboard);
 
 export default router;

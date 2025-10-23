@@ -1,5 +1,8 @@
 import User from '../models/User.mjs';
-import bcrypt from 'bcrypt';
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
+const bcrypt = require('bcrypt');
+
 import jwt from 'jsonwebtoken';
 import { validationResult } from 'express-validator';
 
@@ -127,6 +130,70 @@ export const getUser = async (req, res) => {
   }
 };
 
+// PUT /auth
+export const updateUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+    if (!user || user.isGuest) {
+      return res.status(403).json({error: 'guest cannot update profile'});
+    } 
+
+    const { username, email, password } = req.body;
+
+    // check for unique username/email if changed
+    if (username && username !== user.username) {
+      const existingUsername = await User.findOne({ username });
+      if (existingUsername) return res.status(400).json({ error: 'Username already in use'});
+      user.username = username;
+    }
+
+    if (email && email !== user.email) {
+      const existingEmail = await User.findOne({ email });
+      if (existingEmail) return res.status(400).json({ error: 'Email already in use'});
+      user.email = email;
+    }
+    
+    // Update password if provided
+    if (password) {
+      user.passwordHash = password;   // pre-save hook hashes this automatically
+    }
+
+    await user.save();
+
+    res.json({
+      message: "Profile updated successfully",
+      user: {
+        id: user._id,
+        username: user.username,
+        email: user.email,
+        isGuest: user.isGuest,
+        updatedAt: user.updatedAt
+      }
+    });
+
+  } catch (err) {
+    console.error("❌ upddateGuest error:", err);
+    res.status(500).json({ error: "Failed to update user profile" });
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.userId);
+
+    if (!user || user.isGuest) {
+      return res.status(403).json({ error: "Guests cannot delete account" });
+    }
+
+    await User.findByIdAndDelete(req.userId);
+    res.clearCookie('token').json({ message: "Account deleted successfully" });
+
+  } catch (err) {
+    console.error("❌ deleteUser error:", err);
+    res.status(500).json({ error: "Failed to delete user" });
+  }
+};
+
 // POST /auth/guest
 export const generateGuestToken = async (req, res) => {
   try {
@@ -167,22 +234,30 @@ export const upgradeGuest = async (req, res) => {
   try {
     const { username, email, password } = req.body;
 
+    // console.log("upgradeGuest req.body:", req.body);
+
     const guestUser = await User.findById(req.userId);
+
+    // console.log("current user ID:", req.userId);
+    // console.log(" Found guestUser:", guestUser);
+
     if (!guestUser || !guestUser.isGuest) {
       return res.status(400).json({ error: "User is not a guest" });
     }
 
-    const existing = await User.findOne({ $or: [{ email }, { username }] });
+    // make sure no *other* user is using the username or email
+    const existing = await User.findOne({ 
+      $or: [{ email }, { username }], 
+      _id: { $ne: guestUser._id }       // exclude the guest's own record
+    });
+
     if (existing) {
       return res.status(400).json({ error: "Username or email already in use" });
     }
 
-    const salt = await bcrypt.genSalt(10);
-    const passwordHash = await bcrypt.hash(password, salt);
-
     guestUser.username = username;
     guestUser.email = email;
-    guestUser.passwordHash = passwordHash;
+    guestUser.passwordHash = password;
     guestUser.isGuest = false;
 
     await guestUser.save();
@@ -231,6 +306,7 @@ export const getGuestInfo = async (req, res) => {
   }
 };
 
+// POST /auth/logout
 export const logout = async (req, res) => {
   res.clearCookie('token').json({ message: 'Logged out successfully' });
 }

@@ -91,6 +91,32 @@ export  const submitGameResult = async (req, res) => {
   }
 };
 
+// GET /leaderboard
+export const getGlobalLeaderboard = async (req, res) => {
+  try {
+    // Find top 10 game sessions with fastest time (global, all games)
+    const leaderboard = await GameSession.find({})
+      .populate('userId', 'username isGuest')
+      .populate('gameId', 'name') // to show game name
+      .sort({ timeToComplete: 1 }) // fastest time first
+      .limit(10);
+
+    const results = leaderboard
+      .filter(entry => entry.userId)    // remove sessions with deleted users
+      .map((entry) => ({
+        username: entry.userId.username || "Unknown User",
+        isGuest: entry.userId.isGuest || false,
+        time: entry.timeToComplete,
+        gameName: entry.gameId?.name || "Unknown Game",
+    }));
+
+    res.json({ leaderboard: results });
+  } catch (err) {
+    console.error("❌ Error fetching leaderboard:", err);
+    res.status(500).json({ error: 'Failed to fetch leaderboard' });
+  }
+};
+
 // GET /games/:gameId/leaderboard
 export const getLeaderboard = async (req, res) => {
   try {
@@ -99,7 +125,7 @@ export const getLeaderboard = async (req, res) => {
     const leaderboard = await GameSession.find({ gameId })
       .populate('userId', 'username isGuest')
       .sort({ timeToComplete: 1 }) // or score descending if higher is better
-      .limit(20);
+      .limit(10);
 
     const results = leaderboard.map((entry) => ({
       username: entry.userId.isGuest ? entry.userId.username : entry.userId.username,
