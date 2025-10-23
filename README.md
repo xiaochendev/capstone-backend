@@ -6,7 +6,7 @@
 - allow guest to upgrade their account
 
 [Link to frontend](https://github.com/xiaochendev/capstone-frontend)
-![Used Jira](./jira.png)
+[Used Jira](./jira.png)
 
 # Steps
 1. Copy rerepository to your local file
