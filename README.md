@@ -40,13 +40,13 @@ npm install
 ```
 npm run seed
 ```
+- notes: Your supposed to see 'Data seeded successfully' if Your set MONGO_URI corretly in .env
+
 
 7. Start the server
 ```
 npm run dev
 ```
-
-- notes: Your supposed to see 'Data seeded successfully' if Your set MONGO_URI corretly in .env
 
 **KEEP SERVER(backend) RUNNING**
 
