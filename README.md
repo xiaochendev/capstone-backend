@@ -1,7 +1,7 @@
 # Game platform
 - allow users to play game without register
 - registered users are able to update/delete their profile
-- registered user able to access their personal dashboard
+- registered users are able to access their personal dashboard
 - both guest and registered users are able to view top10 leaderboard
 - allow guest to upgrade their account
 
