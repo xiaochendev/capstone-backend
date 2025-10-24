@@ -85,18 +85,3 @@ Notes: Install Extensions (Thunder Client or Postman) in Visual Studio allow you
 - Express.js
 - Mongoose
 
-# Reflections
-- Did you deliver a project that met all of the technical requirements?
-    Yes
-- Given what the class has covered, did you build something reasonably complex?
-    Yes
-- Did you add a personal touch or a creative element into your project submission?
-    Yes
-- Did you deliver something of value to the end-user (not just a login button and an index page)?
-    Yes
-- Did you follow the code style guidance and exercise best practices?
-    Yes
-- Did you provide an appropriate level of comments?
-    Yes
-- Did you try to deploy your application to a public URL as a personal stretch goal?
-    NA
