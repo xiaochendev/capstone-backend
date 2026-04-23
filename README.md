@@ -1,4 +1,8 @@
 # Game platform
+<div align="center">
+    <img src="./capstone.gif" alt="game platform recording" />
+</div>
+
 - allow users to play game without register
 - registered users are able to update/delete their profile
 - registered users are able to access their personal dashboard
